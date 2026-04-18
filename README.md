@@ -1,110 +1,101 @@
-# Foreground-Preserving-DNN-Pipeline-for-Automated-CBC-from-Microscopic-Images
-📌 Overview
+# 🧬 Foreground-Aware Cryptographic Preprocessing for Cell Segmentation (CBC)
 
-This project proposes a novel privacy-aware preprocessing pipeline for medical image segmentation by combining cryptographic transformations with deep learning.
+## 📌 Overview
+This project proposes a **privacy-aware preprocessing pipeline** for medical image segmentation by combining **cryptographic transformations with deep learning**.
 
-Instead of training directly on raw microscopy images, we introduce a foreground-aware encryption and biased decryption mechanism that:
+Instead of training directly on raw microscopy images, we introduce a **foreground-aware encryption and biased decryption mechanism** that:
+- Preserves task-relevant regions (cells)
+- Suppresses background noise
+- Enhances robustness and feature learning
 
-Preserves task-relevant regions (cells)
-Suppresses background noise
-Enhances robustness and feature learning
+👉 Acts as a **hard attention prior + regularization mechanism** while maintaining **data privacy**
 
-👉 The system effectively acts as a hard attention prior + regularization mechanism while maintaining data privacy.
+---
 
-🚀 Key Idea
+## 🚀 Key Idea
 
-Traditional pipeline:
-
+**Traditional pipeline:**
 Raw Image → Deep Learning Model → Output
 
-Proposed pipeline:
-
+**Proposed pipeline:**
 Raw Image → Foreground-aware Encryption → Biased Decryption → DNN → Output
-🔑 Core Insight
 
-Controlled information suppression via biased decryption improves learning by enforcing task-specific inductive bias.
+---
 
-🏗️ Architecture
-Input Image
-   ↓
-CLAHE Enhancement
-   ↓
-Foreground Mask Generation
-   ↓
-Chaotic Encryption (Privacy Layer)
-   ↓
-Biased Decryption (Foreground Preservation)
-   ↓
-U-Net Segmentation
-   ↓
-Post-processing (Morphological Refinement)
-🧪 Features
-🔐 Privacy-Preserving Training
-Raw data is never directly exposed to the model
-🎯 Foreground-Aware Representation
-Background suppression improves segmentation focus
-🧠 Inductive Bias via Cryptography
-Acts similar to attention but enforced at input level
-🔄 Plug-and-Play
-Compatible with standard CNN architectures (U-Net)
-📊 Results
-Metric	Raw Input	Proposed Method
-Dice Score	↓	↑ ~0.82
-IoU	↓	↑ ~0.71
-MAE (Counting)	↓	Improved
+## 🏗️ Architecture
 
-👉 The proposed method consistently outperforms raw input under identical training conditions.
+Input Image  
+↓  
+CLAHE Enhancement  
+↓  
+Foreground Mask Generation  
+↓  
+Chaotic Encryption (Privacy Layer)  
+↓  
+Biased Decryption (Foreground Preservation)  
+↓  
+U-Net Segmentation  
+↓  
+Post-processing (Morphological Refinement)  
 
-🔍 Ablation Study
+---
 
-We evaluate the contribution of each component:
+## 🧪 Features
 
-Raw images
-CLAHE preprocessing
-Mask-only input
-Full encryption + decryption
-Biased decryption (proposed)
-💡 Observation:
+- 🔐 Privacy-Preserving Training (raw data not directly exposed)
+- 🎯 Foreground-Aware Representation
+- 🧠 Inductive Bias via Cryptography
+- 🔄 Plug-and-Play with standard CNNs (U-Net)
 
-Performance gains are not due to preprocessing alone—
-biased decryption introduces additional learning benefits beyond masking.
+---
 
-🔐 Security Metrics
-NPCR: High (strong diffusion)
-Entropy: Near ideal
-Correlation: Low
+## 📊 Results
 
-👉 Ensures robustness of encryption while maintaining learnability.
+| Metric | Raw Input | Proposed Method |
+|--------|----------|----------------|
+| Dice Score | Lower | ~0.82 |
+| IoU | Lower | ~0.71 |
+| MAE (Counting) | Higher | Improved |
 
-📦 Tech Stack
-Python
-PyTorch
-OpenCV
-NumPy / SciPy
-▶️ How to Run
+👉 Proposed method outperforms raw input under identical training conditions.
+
+---
+
+## 🔍 Ablation Study
+
+Evaluated components:
+- Raw images  
+- CLAHE preprocessing  
+- Mask-only input  
+- Full encryption + decryption  
+- **Biased decryption (proposed)**  
+
+💡 Observation:  
+Biased decryption provides gains beyond preprocessing and masking.
+
+---
+
+## 🔐 Security Metrics
+
+- NPCR: High  
+- Entropy: Near ideal  
+- Correlation: Low  
+
+---
+
+## 📦 Tech Stack
+
+- Python  
+- PyTorch  
+- OpenCV  
+- NumPy / SciPy  
+
+---
+
+## ▶️ How to Run
+
+```bash
 git clone <repo-link>
 cd project-folder
 pip install -r requirements.txt
 python train.py
-🎥 Demo
-
-(Add demo video / GIF here)
-
-🌍 Applications
-🧬 Medical Imaging (cell segmentation)
-🧍 People Counting (privacy-preserving vision)
-🤖 Robotics perception (edge AI)
-🏙️ Smart surveillance systems
-☁️ Distributed ML pipelines
-⚠️ Limitations
-Depends on quality of foreground mask
-May remove useful background information
-Additional compute overhead (encryption/decryption)
-📌 Future Work
-Extend to multi-domain datasets
-Integrate with attention-based architectures
-Optimize for real-time edge deployment
-Explore theoretical grounding of inductive bias
-🧠 Key Contribution
-
-A hybrid cryptography–learning pipeline where data protection and representation learning are unified, enabling both privacy preservation and improved model performance.

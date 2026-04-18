@@ -91,11 +91,3 @@ Biased decryption provides gains beyond preprocessing and masking.
 - NumPy / SciPy  
 
 ---
-
-## ▶️ How to Run
-
-```bash
-git clone <repo-link>
-cd project-folder
-pip install -r requirements.txt
-python train.py
